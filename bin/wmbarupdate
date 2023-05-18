@@ -1,0 +1,11 @@
+#!/bin/sh
+# Distributed under the terms of the GNU General Public License v3
+
+# strict mode
+set -eu
+
+# make sure that X is running
+if [ -n "$DISPLAY" ]; then
+  # print output for dwm status bar
+  xsetroot -name "$(wmbarshow)"
+fi

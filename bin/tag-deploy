@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z $1 ]
+then
+	echo "Usage: tag-deploy VERSION_NUMBER [COMMIT_HASH]"
+	exit 1
+fi
+
+if [ -z $2 ]
+then
+	commit_hash=`git rev-parse HEAD`
+else
+	commit_hash=$2
+fi
+
+build_number=`git rev-list --count $commit_hash`
+
+git tag $1.$build_number

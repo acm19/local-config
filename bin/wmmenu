@@ -1,0 +1,27 @@
+#!/bin/sh
+# Distributed under the terms of the GNU General Public License v3
+
+# strict mode
+set -eu
+
+# menu
+programs="firefox
+chromium-browser
+gvim
+pavucontrol
+rox
+pcmanfm
+filezilla
+soffice
+wmkill
+xkill
+gimp
+geeqie
+vlc"
+
+# select program and launch it
+num_programs=$(echo "$programs" | grep "" -c)
+program=$(echo "$programs" | dmenu -l "$num_programs")
+if [ -n "$program" ]; then
+  exec $program
+fi

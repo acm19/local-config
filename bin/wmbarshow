@@ -1,0 +1,17 @@
+#!/bin/bash
+# Distributed under the terms of the GNU General Public License v3
+
+# print date for dwm status bar
+current_date=$(date +"%a %b %e %H:%M")
+muted=$(awk -F"[][]" '/dB/ { print $6 }' <(amixer sget Master))
+
+if [ "$muted" == "off" ]; then
+  vol=$muted
+else
+  vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
+fi
+
+bat_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+bat_status=$(cat /sys/class/power_supply/BAT0/status)
+
+echo "$bat_status $bat_capacity% | Vol $vol | $current_date"
