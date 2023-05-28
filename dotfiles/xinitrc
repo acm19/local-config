@@ -76,6 +76,32 @@ fi
 # make touchpad tapping work
 xinput set-prop "DELL097D:00 04F3:311C Touchpad" "libinput Tapping Enabled" 1 &
 
+# to work around Java applications not working properly
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# local xft to avoid issue with icons in the menu in old verions
+LD_LIBRARY_PATH=${HOME}/opt/libxft-libXft-2.3.6/lib
+if [ -d "$LD_LIBRARY_PATH" ]; then
+  export LD_LIBRARY_PATH
+fi
+
+# required for dbus to know the graphical environment
+# shellcheck disable=SC2046
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+
+systemctl --user import-environment DISPLAY XAUTHORITY
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+  dbus-update-activation-environment DISPLAY XAUTHORITY
+fi
+
+# work around slowness opening applications, kudos to @gonzaru
+export XDG_CURRENT_DESKTOP=dwm
+export XDG_SESSION_DESKTOP=dwm
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export DBUS_SESSION_BUS_ADDRESS=unix:path=${XDG_RUNTIME_DIR}/bus
+
 # dwm
 if [ "$wm" = "dwm" ]; then
   # background color
@@ -102,7 +128,7 @@ if [ "$wm" = "dwm" ]; then
 
   while :; do
     if [ $wm = "dwm" ]; then
-      _JAVA_AWT_WM_NONREPARENTING=1 dwm > $HOME/.local/share/dwm/dwm.log 2>&1
+      dwm > "$HOME"/.local/share/dwm/dwm.log 2>&1
     fi
     if [ "$(printf 'no\nyes' | dmenu -p "Do you want to quit ${wm}?")" = "yes" ]; then
       # double check
