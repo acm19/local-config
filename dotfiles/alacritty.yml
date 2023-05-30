@@ -1,0 +1,76 @@
+import:
+  - ~/projects/_external/alacritty-theme/themes/campbell.yaml
+
+window:
+  dimensions:
+    columns: 80
+    lines: 24
+  padding:
+    x: 0
+    y: 0
+  opacity: 1.0
+  dynamic_padding: false
+  dynamic_title: true
+  decorations: full
+  startup_mode: Windowed
+
+font:
+  normal:
+    family: SF Mono
+    style: Regular
+  bold:
+    family: SF Mono
+    style: Semibold
+  italic:
+    family: SF Mono
+    style: RegularItalic
+  bold_italic:
+    family: SF Mono
+    style: BoldItalic
+  size: 7.0
+debug:
+  render_timer: false
+  persistent_logging: false
+  log_level: Off
+draw_bold_text_with_bright_colors: true
+live_config_reload: true
+tabspaces: 4
+custom_cursor_colors: true
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+  blink_interval: 500
+  blink_timeout: 0
+scrolling:
+  # 0 disables scrolling
+  history: 0
+  multiplier: 5
+  faux_multiplier: 5
+  auto_scroll: false
+bell:
+  duration: 0
+mouse:
+  double_click: {threshold: 300}
+  triple_click: {threshold: 300}
+  hide_when_typing: true
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  save_to_clipboard: true
+
+# use tmux as shell
+shell:
+  program: tmux
+  args:
+    - new-session
+    - -A
+    - -D
+    - -s
+    - default
+
+key_bindings:
+  # fixes <C-^> alternative file in vim
+  - {key: Key6, mods: Control, chars: "\x1E"}
+mouse_bindings:
+  # paste with mouse wheel
+  - {mouse: Middle, action: PasteSelection}
