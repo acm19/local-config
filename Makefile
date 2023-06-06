@@ -8,6 +8,7 @@ dotenvs_link:
 	ln -sf $$PWD/dotfiles/xinitrc $$HOME/.xinitrc
 	ln -sf $$PWD/dotfiles/vimrc $$HOME/.vimrc
 	ln -sf $$PWD/dotfiles/alacritty.yml $$HOME/.alacritty.yml
+	ln -sf $$PWD/dotfiles/tmux.conf $$HOME/.tmux.conf
 
 .PHONY: bin_link
 bin_link:
