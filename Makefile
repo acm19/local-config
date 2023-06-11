@@ -18,6 +18,7 @@ bin_link:
 	ln -sf $$PWD/bin/wmbarupdate $$HOME/bin/wmbarupdate
 	ln -sf $$PWD/bin/wmmenu $$HOME/bin/wmmenu
 	ln -sf $$PWD/bin/wmreload $$HOME/bin/wmreload
+	ln -sf $$PWD/bin/wmscreenshot $$HOME/bin/wmscreenshot
 
 .PHONY: update_alacritty
 update_alacritty:
