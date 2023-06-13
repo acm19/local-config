@@ -6,6 +6,7 @@ all: dotenvs_link bin_link
 .PHONY: dotenvs_link
 dotenvs_link:
 	ln -sf $$PWD/dotfiles/xinitrc $$HOME/.xinitrc
+	ln -sf $$PWD/dotfiles/inputrc $$HOME/.inputrc
 	ln -sf $$PWD/dotfiles/vimrc $$HOME/.vimrc
 	ln -sf $$PWD/dotfiles/tigrc $$HOME/.tigrc
 	ln -sf $$PWD/dotfiles/alacritty.yml $$HOME/.alacritty.yml
