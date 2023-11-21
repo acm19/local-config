@@ -102,6 +102,9 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export DBUS_SESSION_BUS_ADDRESS=unix:path=${XDG_RUNTIME_DIR}/bus
 
+# to properly scale alacritty in secondary screen
+export WINIT_X11_SCALE_FACTOR=1.5
+
 # dwm
 if [ "$wm" = "dwm" ]; then
   # background color
