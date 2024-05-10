@@ -30,6 +30,7 @@ update_alacritty:
 	git checkout $$(git tag | grep -v v9 | grep -E "^v[0-9]+\.[0-9]+\.[0-9]+$$" | sort --version-sort | tail -n 1) && \
 	make binary
 	cp "$(ALACRITTY_SOURCE_PATH)/target/release/alacritty" "$$HOME/bin"
+	chmod +x "$$HOME/bin/alacritty"
 
 .PHONY: update_tmux
 update_tmux:
@@ -38,3 +39,4 @@ update_tmux:
 	git checkout $$(git tag | grep -E "^[0-9]+\.[0-9]+$$" | sort --version-sort | tail -n 1) && \
 	sh autogen.sh && make && \
 	cp "$(TMUX_SOURCE_PATH)/tmux" "$$HOME/bin"
+	chmod +x "$$HOME/bin/tmux"
