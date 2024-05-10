@@ -1,0 +1,93 @@
+custom_cursor_colors = true
+import = ["/home/acm/projects/_external/alacritty-theme/themes/campbell.toml"]
+live_config_reload = true
+tabspaces = 4
+
+[bell]
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+blink_interval = 500
+blink_timeout = 0
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[debug]
+log_level = "Off"
+persistent_logging = false
+render_timer = false
+
+[font]
+size = 7.0
+
+[font.bold]
+family = "SF Mono"
+style = "Semibold"
+
+[font.bold_italic]
+family = "SF Mono"
+style = "BoldItalic"
+
+[font.italic]
+family = "SF Mono"
+style = "RegularItalic"
+
+[font.normal]
+family = "SF Mono"
+style = "Regular"
+
+# fixes <C-^> alternative file in vim
+[[keyboard.bindings]]
+chars = "\u001E"
+key = "Key6"
+mods = "Control"
+
+[mouse]
+hide_when_typing = true
+
+# paste with mouse wheel
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[mouse.double_click]
+threshold = 300
+
+[mouse.triple_click]
+threshold = 300
+
+[scrolling]
+auto_scroll = false
+faux_multiplier = 5
+# 0 disables scrolling
+history = 0
+multiplier = 5
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+# use tmux as shell
+[shell]
+args = ["new-session", "-A", "-D", "-s", "default"]
+program = "tmux"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+dynamic_title = true
+opacity = 1.0
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 80
+lines = 24
+
+[window.padding]
+x = 0
+y = 0

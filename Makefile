@@ -10,7 +10,7 @@ dotenvs_link:
 	ln -sf $$PWD/dotfiles/inputrc $$HOME/.inputrc
 	ln -sf $$PWD/dotfiles/vimrc $$HOME/.vimrc
 	ln -sf $$PWD/dotfiles/tigrc $$HOME/.tigrc
-	ln -sf $$PWD/dotfiles/alacritty.yml $$HOME/.alacritty.yml
+	ln -sf $$PWD/dotfiles/alacritty.toml $$HOME/.alacritty.toml
 	ln -sf $$PWD/dotfiles/tmux.conf $$HOME/.tmux.conf
 
 .PHONY: bin_link
@@ -29,7 +29,7 @@ update_alacritty:
 	git fetch --all && \
 	git checkout $$(git tag | grep -v v9 | grep -E "^v[0-9]+\.[0-9]+\.[0-9]+$$" | sort --version-sort | tail -n 1) && \
 	make binary
-	cp "$(ALACRITTY_SOURCE_PATH)/target/release/alacritty" "$$HOME/bin"
+	cp $(ALACRITTY_SOURCE_PATH)/target/release/alacritty "$$HOME/bin"
 	chmod +x "$$HOME/bin/alacritty"
 
 .PHONY: update_tmux
@@ -37,6 +37,6 @@ update_tmux:
 	cd $(TMUX_SOURCE_PATH) && \
 	git fetch --all && \
 	git checkout $$(git tag | grep -E "^[0-9]+\.[0-9]+$$" | sort --version-sort | tail -n 1) && \
-	sh autogen.sh && make && \
-	cp "$(TMUX_SOURCE_PATH)/tmux" "$$HOME/bin"
+	sh autogen.sh && ./configure && make
+	cp $(TMUX_SOURCE_PATH)/tmux "$$HOME/bin"
 	chmod +x "$$HOME/bin/tmux"
