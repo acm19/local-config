@@ -1,7 +1,5 @@
-custom_cursor_colors = true
 import = ["/home/acm/projects/_external/alacritty-theme/themes/campbell.toml"]
 live_config_reload = true
-tabspaces = 4
 
 [bell]
 duration = 0
@@ -55,15 +53,7 @@ hide_when_typing = true
 action = "PasteSelection"
 mouse = "Middle"
 
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
-
 [scrolling]
-auto_scroll = false
-faux_multiplier = 5
 # 0 disables scrolling
 history = 0
 multiplier = 5
