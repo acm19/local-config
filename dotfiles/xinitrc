@@ -74,7 +74,7 @@ if [ $autocutsel -eq 1 ]; then
 fi
 
 # make touchpad tapping work
-xinput set-prop "DELL097D:00 04F3:311C Touchpad" "libinput Tapping Enabled" 1 &
+xinput set-prop "$(xinput --list | grep -i touchpad | head -n 1 | awk '{print $6}' | cut -d'=' -f2)" "libinput Tapping Enabled" 1 &
 
 # to work around Java applications not working properly
 export _JAVA_AWT_WM_NONREPARENTING=1
