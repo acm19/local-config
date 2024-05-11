@@ -40,3 +40,10 @@ update_tmux:
 	sh autogen.sh && ./configure && make
 	cp $(TMUX_SOURCE_PATH)/tmux "$$HOME/bin"
 	chmod +x "$$HOME/bin/tmux"
+
+.PHONY: update_tenv
+update_tenv: export LATEST_VERSION := "$(shell curl --silent https://api.github.com/repos/tofuutils/tenv/releases/latest | jq -r .tag_name)"
+update_tenv:
+	curl -L "https://github.com/tofuutils/tenv/releases/latest/download/tenv_${LATEST_VERSION}_amd64.deb" -o "/tmp/tenv_${LATEST_VERSION}_amd64.deb"
+	sudo dpkg -i "/tmp/tenv_${LATEST_VERSION}_amd64.deb"
+	tenv completion bash | sudo tee /usr/share/bash-completion/completions/tenv > /dev/null
