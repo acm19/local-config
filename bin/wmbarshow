@@ -8,7 +8,8 @@ muted=$(awk -F"[][]" '/dB/ { print $6 }' <(amixer sget Master))
 if [ "$muted" == "off" ]; then
   vol=$muted
 else
-  vol=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))
+  # uses front left speaker volume as right should be the same
+  vol=$(awk -F"/ " '{ print $4 }' <(pactl get-sink-volume @DEFAULT_SINK@ | head -n 1))
 fi
 
 bat_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
