@@ -3,7 +3,7 @@
 
 # print date for dwm status bar
 current_date=$(date +"%a %b %e %H:%M")
-muted=$(awk -F"[][]" '/dB/ { print $6 }' <(amixer sget Master))
+muted=$(test "$(awk '{ print $2 }' <(pactl get-sink-mute @DEFAULT_SINK@))" = "yes" && echo off || echo on)
 
 if [ "$muted" == "off" ]; then
   vol=$muted
