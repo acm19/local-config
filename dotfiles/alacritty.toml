@@ -1,4 +1,4 @@
-import = ["/home/acm/projects/_external/alacritty-theme/themes/campbell.toml"]
+general.import = ["/home/acm/projects/_external/alacritty-theme/themes/campbell.toml"]
 live_config_reload = true
 
 [bell]
