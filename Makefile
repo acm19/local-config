@@ -36,7 +36,7 @@ update_alacritty:
 update_tmux:
 	cd $(TMUX_SOURCE_PATH) && \
 	git fetch --all && \
-	git checkout $$(git tag | grep -E "^[0-9]+\.[0-9]+$$" | sort --version-sort | tail -n 1) && \
+	git checkout $$(git tag | grep -E "^[0-9]+\.[0-9]+[a-z]*$$" | sort --version-sort | tail -n 1) && \
 	sh autogen.sh && ./configure && make
 	cp $(TMUX_SOURCE_PATH)/tmux "$$HOME/bin"
 	chmod +x "$$HOME/bin/tmux"
