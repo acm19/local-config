@@ -1,5 +1,5 @@
 general.import = ["/home/acm/projects/_external/alacritty-theme/themes/campbell.toml"]
-live_config_reload = true
+general.live_config_reload = true
 
 [bell]
 duration = 0
@@ -63,7 +63,7 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 # use tmux as shell
-[shell]
+[terminal.shell]
 args = ["new-session", "-A", "-D", "-s", "default"]
 program = "tmux"
 
