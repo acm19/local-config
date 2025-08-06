@@ -24,19 +24,19 @@ render_timer = false
 size = 7.0
 
 [font.bold]
-family = "SF Mono"
-style = "Semibold"
+family = "SFMono Nerd Font"
+style = "Bold"
 
 [font.bold_italic]
-family = "SF Mono"
-style = "BoldItalic"
+family = "SFMono Nerd Font"
+style = "Bold Italic"
 
 [font.italic]
-family = "SF Mono"
-style = "RegularItalic"
+family = "SFMono Nerd Font"
+style = "Italic"
 
 [font.normal]
-family = "SF Mono"
+family = "SFMono Nerd Font"
 style = "Regular"
 
 # fixes <C-^> alternative file in vim
