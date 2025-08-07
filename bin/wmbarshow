@@ -14,5 +14,14 @@ fi
 
 bat_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
 bat_status=$(cat /sys/class/power_supply/BAT0/status)
+YELLOW="^c#FFFF00^"
+RED="^c#FF0000^"
+WARNING=45
+CRITICAL=30
+if [ "$bat_capacity" -le "$WARNING" ] && [ "$bat_capacity" -gt "$CRITICAL" ]; then
+  bat_colour=$YELLOW
+elif [ "$bat_capacity" -le "$CRITICAL" ]; then
+  bat_colour=$RED
+fi
 
-echo "$bat_status $bat_capacity% | Vol $vol | $current_date"
+echo "$bat_status ${bat_colour}${bat_capacity}% ^c#FFFFFF^| Vol $vol | $current_date"
