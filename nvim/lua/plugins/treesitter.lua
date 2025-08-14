@@ -5,7 +5,7 @@ return {
   build = ":TSUpdate",
   config = function()
     require"nvim-treesitter.configs".setup {
-      ensure_installed = { "c", "lua", "go", "java", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+      ensure_installed = { "c", "lua", "go", "gotmpl", "gomod", "gosum", "java", "vim", "vimdoc", "query", "markdown", "markdown_inline", "git_config", "gitignore" },
       sync_install = false,
       auto_install = true,
       ignore_install = { "javascript" },
@@ -22,5 +22,16 @@ return {
       },
       indent = { enable = true }
     }
+
+    vim.filetype.add({
+      extension = {
+        gotmpl = 'gotmpl',
+      },
+      pattern = {
+        [".*/templates/.*%.tm?pl"] = "helm",
+        [".*/templates/.*%.ya?ml"] = "helm",
+        ["helmfile.*%.ya?ml"] = "helm",
+      },
+    })
   end
 }
