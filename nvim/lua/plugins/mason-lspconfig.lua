@@ -3,36 +3,43 @@ return {
     "mason-org/mason.nvim",
     config = function()
       require("mason").setup({})
-    end
+    end,
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "stylua",
+        },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
         -- LSP configs: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-        ensure_installed = { "lua_ls", "gopls", "golangci_lint_ls" }
+        ensure_installed = { "lua_ls", "gopls", "golangci_lint_ls" },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities
-      })
       lspconfig.gopls.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
       lspconfig.golangci_lint_ls.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
 
       -- key bindings
       vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-    end
-  }
+    end,
+  },
 }
