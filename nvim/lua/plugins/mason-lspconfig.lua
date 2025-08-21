@@ -27,14 +27,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
-
-      -- key bindings
       vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.hover, {})
+      vim.keymap.set({ "n", "i" }, "<C-K>", vim.lsp.buf.implementation, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
     end,

@@ -46,3 +46,12 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     pcall(vim.diagnostic.show)
   end,
 })
+
+
+-- ############################################################################
+-- Ensures the cursor is kept in the centre of the screen, even when scrolling
+-- at the end of files
+vim.api.nvim_create_autocmd("CursorMoved", {
+  pattern = "*",
+  command = "silent! normal! zz",
+})
