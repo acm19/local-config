@@ -6,6 +6,7 @@ set fileformat=unix
 set fileformats=unix,dos
 set ignorecase
 set smartcase
+set relativenumber
 au FileType gitcommit set tw=72
 au FileType make setlocal noexpandtab
 "Remove all trailing whitespace by pressing F5
