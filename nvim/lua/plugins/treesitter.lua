@@ -31,6 +31,12 @@ return {
         [".*/templates/.*%.tm?pl"] = "helm",
         [".*/templates/.*%.ya?ml"] = "helm",
         ["helmfile.*%.ya?ml"] = "helm",
+        -- Highlight Apache config files
+        [".*/apache2/.*%.conf"] = "apache",
+        [".*/httpd/.*%.conf"] = "apache",
+        ["httpd%.conf"] = "apache",
+        ["apache%.conf"] = "apache",
+        [".*/conf.d/.*%.conf"] = "apache",
       },
     })
   end
