@@ -2,7 +2,7 @@ ALACRITTY_SOURCE_PATH?="$$HOME/opt/alacritty"
 TMUX_SOURCE_PATH?="$$HOME/opt/tmux"
 
 .PHONY: all
-all: dotenvs-link bin-link
+all: dotenvs-link bin-link gitconfig-install
 
 .PHONY: dotenvs-link
 dotenvs-link:
@@ -22,6 +22,20 @@ bin-link:
 	ln -sf $$PWD/bin/wmmenu $$HOME/bin/wmmenu
 	ln -sf $$PWD/bin/wmreload $$HOME/bin/wmreload
 	ln -sf $$PWD/bin/wmscreenshot $$HOME/bin/wmscreenshot
+
+.PHONY: gitconfig-install
+gitconfig-install:
+	@if [ ! -f $$HOME/.gitconfig ]; then \
+		touch $$HOME/.gitconfig; \
+	fi
+	@if ! grep -q "path = $$PWD/dotfiles/gitconfig" $$HOME/.gitconfig 2>/dev/null; then \
+		echo "" >> $$HOME/.gitconfig; \
+		echo "[include]" >> $$HOME/.gitconfig; \
+		echo "	path = $$PWD/dotfiles/gitconfig" >> $$HOME/.gitconfig; \
+		echo "Gitconfig included in $$HOME/.gitconfig"; \
+	else \
+		echo "Gitconfig already included in $$HOME/.gitconfig"; \
+	fi
 
 .PHONY: nvim
 nvim:

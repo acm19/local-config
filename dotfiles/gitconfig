@@ -1,0 +1,38 @@
+[user]
+	name = acm
+	email = acm19@users.noreply.github.com
+	signingkey = /home/acm/.ssh/git_keys/id_rsa
+
+[core]
+	editor = vim
+	pager = less -x1,5 -FRX
+	autocrlf = input
+
+[color]
+	ui = auto
+
+[alias]
+	co = checkout
+	ci = commit
+	br = branch
+	st = status
+	last = log -1 HEAD
+	oneline = log --oneline -n1
+	amend = commit -a --amend --no-edit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[init]
+	defaultBranch = main
+
+[diff]
+	colorMoved = zebra
+
+[fetch]
+	prune = true
