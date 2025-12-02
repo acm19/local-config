@@ -10,7 +10,8 @@ return {
     config = function()
       require("gitsigns").setup()
 
-      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+      vim.keymap.set("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", {})
+      vim.keymap.set('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', {})
     end,
   },
 }

@@ -15,6 +15,7 @@ dotenvs-link:
 
 .PHONY: bin-link
 bin-link:
+	mkdir -p $$HOME/bin
 	ln -sf $$PWD/bin/deploy $$HOME/bin/deploy
 	ln -sf $$PWD/bin/tag-deploy $$HOME/bin/tag-deploy
 	ln -sf $$PWD/bin/wmbarshow $$HOME/bin/wmbarshow
@@ -40,6 +41,15 @@ gitconfig-install:
 .PHONY: nvim
 nvim:
 	ln -sf $$PWD/nvim $$HOME/.config/nvim
+
+.PHONY: update-liquidprompt
+update-liquidprompt:
+	mkdir -p $$HOME/opt
+	@if [ ! -d $$HOME/opt/liquidprompt ]; then \
+		git clone https://github.com/nojhan/liquidprompt.git $$HOME/opt/liquidprompt; \
+	fi
+	cd $$HOME/opt/liquidprompt && \
+	git pull
 
 .PHONY: update-alacritty
 update-alacritty:
