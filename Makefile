@@ -2,7 +2,7 @@ ALACRITTY_SOURCE_PATH?="$$HOME/opt/alacritty"
 TMUX_SOURCE_PATH?="$$HOME/opt/tmux"
 
 .PHONY: all
-all: dotenvs-link bin-link gitconfig-install
+all: dotenvs-link bin-link gitconfig-install bashrc-install
 
 .PHONY: dotenvs-link
 dotenvs-link:
@@ -36,6 +36,20 @@ gitconfig-install:
 		echo "Gitconfig included in $$HOME/.gitconfig"; \
 	else \
 		echo "Gitconfig already included in $$HOME/.gitconfig"; \
+	fi
+
+.PHONY: bashrc-install
+bashrc-install:
+	@mkdir -p $$PWD/dotfiles/bashrc.d
+	@ln -sfn $$PWD/dotfiles/bashrc.d $$HOME/.bashrc.d
+	@if [ ! -f $$HOME/.bashrc ]; then \
+		touch $$HOME/.bashrc; \
+	fi
+	@if ! grep -q "if \[ -d ~/.bashrc.d \]; then" $$HOME/.bashrc 2>/dev/null; then \
+		cat $$PWD/templates/bashrc.d-loader.sh >> $$HOME/.bashrc; \
+		echo "Bashrc.d configuration added to $$HOME/.bashrc"; \
+	else \
+		echo "Bashrc.d configuration already exists in $$HOME/.bashrc"; \
 	fi
 
 .PHONY: nvim
