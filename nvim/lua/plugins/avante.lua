@@ -9,34 +9,17 @@ return {
     version = false, -- Never set this value to "*"! Never!
     ---@module 'avante'
     ---@type avante.Config
-    opts = {
-      -- add any opts here
-      -- this file can contain specific instructions for your project
-      instructions_file = "avante.md",
-      -- for example
-      provider = "claude-code",
-      providers = {
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-sonnet-4-20250514",
-          timeout = 30000, -- Timeout in milliseconds
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
+      opts = {
+        -- add any opts here
+        instructions_file = "avante.md",
+        provider = "copilot",
+        providers = {
+          copilot = {
+            -- Uses github/copilot via zbirenbaum/copilot.lua
+            -- You can add copilot-specific options here if needed
           },
         },
       },
-      acp_providers = {
-        ["claude-code"] = {
-          command = "npx",
-          args = { "@zed-industries/claude-code-acp" },
-          env = {
-            NODE_NO_WARNINGS = "1",
-            ANTHROPIC_API_KEY = os.getenv("AVANTE_ANTHROPIC_API_KEY"),
-          },
-        },
-      },
-    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
