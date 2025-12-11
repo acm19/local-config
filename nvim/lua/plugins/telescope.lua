@@ -9,12 +9,25 @@ return {
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+      vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Telescope symbols" })
     end,
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
       require("telescope").setup({
+        pickers = {
+          buffers = {
+            mappings = {
+              i = {
+                ["<C-d>"] = "delete_buffer",
+              },
+              n = {
+                ["dd"] = "delete_buffer",
+              },
+            },
+          },
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
