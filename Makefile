@@ -74,7 +74,13 @@ update-alacritty:
 	cp $(ALACRITTY_SOURCE_PATH)/target/release/alacritty "$$HOME/bin"
 	chmod +x "$$HOME/bin/alacritty"
 
-# @todo: add an update for nvim
+.PHONY: update-nvim
+update-nvim:
+	curl -LO --output-dir /tmp https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+	rm -rf $$HOME/opt/nvim-linux-x86_64
+	tar -C $$HOME/opt -xzf /tmp/nvim-linux-x86_64.tar.gz
+	rm /tmp/nvim-linux-x86_64.tar.gz
+
 .PHONY: update-tmux
 update-tmux:
 	cd $(TMUX_SOURCE_PATH) && \
