@@ -13,7 +13,6 @@ return {
       vim.keymap.set("n", "<leader>ca", ":CodeCompanionActions<CR>", { desc = "Code Companion Action Palette" })
 
       require("codecompanion").setup({
-        ignore_warnings = true, -- ignore warnings until https://github.com/olimorris/codecompanion.nvim/pull/2439 is merged
         display = {
           chat = {
             window = {
