@@ -31,8 +31,5 @@
 [init]
 	defaultBranch = main
 
-[diff]
-	colorMoved = zebra
-
 [fetch]
 	prune = true
