@@ -65,6 +65,15 @@ update-liquidprompt:
 	cd $$HOME/opt/liquidprompt && \
 	git pull
 
+.PHONY: update-mavencompletion
+update-mavencompletion:
+	mkdir -p $$HOME/opt
+	@if [ ! -d $$HOME/opt/maven-bash-completion ]; then \
+		git clone https://github.com/juven/maven-bash-completion.git $$HOME/opt/maven-bash-completion; \
+	fi
+	cd $$HOME/opt/maven-bash-completion && \
+	git pull
+
 .PHONY: update-alacritty
 update-alacritty:
 	cd $(ALACRITTY_SOURCE_PATH) && \
@@ -89,6 +98,12 @@ update-tmux:
 	sh autogen.sh && ./configure && make
 	cp $(TMUX_SOURCE_PATH)/tmux "$$HOME/bin"
 	chmod +x "$$HOME/bin/tmux"
+
+.PHONY: update-awscli
+update-awscli:
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+	unzip /tmp/awscliv2.zip -d /tmp
+	/tmp/aws/install --install-dir $$HOME/opt --bin-dir $$HOME/bin/ --update
 
 .PHONY: update-tenv
 update-tenv: export LATEST_VERSION := "$(shell curl --silent https://api.github.com/repos/tofuutils/tenv/releases/latest | jq -r .tag_name)"
