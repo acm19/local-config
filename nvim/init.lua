@@ -6,3 +6,6 @@ require("config.autocmds")
 -- I making use of CursorHold events. I'll revistit
 -- if this causes performance issues.
 vim.opt.updatetime = 250
+
+-- Use the system clipboard for all operations.
+vim.opt.clipboard = "unnamedplus"
