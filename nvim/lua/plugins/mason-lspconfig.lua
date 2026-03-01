@@ -20,7 +20,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         -- LSP configs: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-        ensure_installed = { "lua_ls", "gopls" },
+        ensure_installed = { "lua_ls", "gopls", "bashls" },
       })
     end,
   },
