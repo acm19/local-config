@@ -111,3 +111,9 @@ update-tenv:
 	curl -L "https://github.com/tofuutils/tenv/releases/latest/download/tenv_${LATEST_VERSION}_amd64.deb" -o "/tmp/tenv_${LATEST_VERSION}_amd64.deb"
 	sudo dpkg -i "/tmp/tenv_${LATEST_VERSION}_amd64.deb"
 	tenv completion bash | sudo tee /usr/share/bash-completion/completions/tenv > /dev/null
+
+# Ensures autolock is called when laptop lid is closed
+.PHONY: install-lock-on-lid-close-service
+install-lock-on-lid-close-service:
+	envsubst < templates/lock-on-lid-close.service | sudo tee /etc/systemd/system/lock-on-sleep.service > /dev/null
+	sudo systemctl enable lock-on-sleep.service

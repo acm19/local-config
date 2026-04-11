@@ -1,0 +1,11 @@
+[Unit]
+Description=Lock screen on sleep/lid close
+Before=sleep.target
+
+[Service]
+User=$USER
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/slock
+
+[Install]
+WantedBy=sleep.target
