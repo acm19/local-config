@@ -62,7 +62,7 @@ fi
 # xautolock
 if [ "$xautolock" -eq 1 ]; then
   if command -v slock >/dev/null 2>&1; then
-    xautolock -detectsleep -time 1 -locker slock -corners ---- &
+    xautolock -detectsleep -time 5 -locker slock -corners ---- &
     xss-lock slock &
   fi
 fi
