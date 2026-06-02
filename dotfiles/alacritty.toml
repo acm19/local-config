@@ -81,18 +81,21 @@ lines = 24
 x = 0
 y = 0
 
+# 1. Default URL handler (http, https, mailto, etc.)
 [[hints.enabled]]
-regex = "(b/)\\d+"
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+"
 command = "xdg-open"
 binding = { key = "U", mods = "Control|Shift" }
 mouse = { enabled = true, mods = "Shift" }
 
+# 2. Combined b/ and cl/ links
 [[hints.enabled]]
-regex = "(cl/)\\d+"
+regex = "(b/|cl/)\\d+"
 command = "xdg-open"
 binding = { key = "U", mods = "Control|Shift" }
 mouse = { enabled = true, mods = "Shift" }
 
+# 3. go/ links
 [[hints.enabled]]
 regex = "(go/)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+"
 command = "xdg-open"
