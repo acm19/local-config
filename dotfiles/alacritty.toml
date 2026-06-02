@@ -1,4 +1,4 @@
-general.import = ["~/projects/_external/alacritty-theme/themes/campbell.toml"]
+general.import = ["~/projects/_external/alacritty-theme/themes/catppuccin_macchiato.toml"]
 general.live_config_reload = true
 
 [bell]
@@ -48,10 +48,9 @@ mods = "Control"
 [mouse]
 hide_when_typing = true
 
-# paste with mouse wheel
 [[mouse.bindings]]
-action = "PasteSelection"
 mouse = "Middle"
+action = "PasteSelection"
 
 [scrolling]
 # 0 disables scrolling
@@ -81,3 +80,21 @@ lines = 24
 [window.padding]
 x = 0
 y = 0
+
+[[hints.enabled]]
+regex = "(b/)\\d+"
+command = "xdg-open"
+binding = { key = "U", mods = "Control|Shift" }
+mouse = { enabled = true, mods = "Shift" }
+
+[[hints.enabled]]
+regex = "(cl/)\\d+"
+command = "xdg-open"
+binding = { key = "U", mods = "Control|Shift" }
+mouse = { enabled = true, mods = "Shift" }
+
+[[hints.enabled]]
+regex = "(go/)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+"
+command = "xdg-open"
+binding = { key = "U", mods = "Control|Shift" }
+mouse = { enabled = true, mods = "Shift" }
