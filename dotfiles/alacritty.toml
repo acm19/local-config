@@ -97,7 +97,7 @@ mouse = { enabled = true, mods = "Shift" }
 
 # 3. go/ links, it needs to use chrome as xdg-open doesn't recognise the app to open these
 [[hints.enabled]]
-regex = "(go|goto)/[^\\s<>\"'(){}\\[\\]:;,`]+"
+regex = "(go|goto)/[^\\s<>\"'(){}\\[\\]:;,`.]+"
 command = "google-chrome"
 binding = { key = "U", mods = "Control|Shift" }
 mouse = { enabled = true, mods = "Shift" }
